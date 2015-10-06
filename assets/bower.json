@@ -1,0 +1,19 @@
+{
+  "name": "assets",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "jquery-colorbox": "~1.6.3",
+    "modernizr": "~3.0.0",
+    "slick-carousel": "~1.5.8",
+    "susy": "~2.2.6"
+  }
+}

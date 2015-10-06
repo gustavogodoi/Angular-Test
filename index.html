@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Company UI</title>
+
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+  <link href="assets/css/styles.min.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js" type="text/javascript"></script>
+  <script src="assets/js/app.min.js" type="text/javascript"></script>
+</head>
+<body ng-controller="Calc">
+
+  <div class="wrapper">
+
+    <header id="header" class="header" role="banner">
+
+      <div class="container">
+
+        <img class="brand" src="assets/img/logo.png" alt="Company X">
+
+        <h2 class="page-title">Shipment Prices</h2>
+
+      </div><!-- /container -->
+
+    </header><!-- /header -->
+
+    <section class="main-content">
+
+      <div class="container">
+
+          <div class="box-calculator">
+
+            <p>Select the options bellow:</p>
+
+            <form ng-submit="getPrice()">
+              <div class="field">
+                <select name="origin" id="origin" ng-model="selectedOrigin" required>
+                  <option value="">Origin County</option>
+                  <option value="{{option.origin}}"
+                    ng-repeat="option in data | unique:'origin'"
+                    ng-selelected="{{ selectedOrigin == option }}"
+                    >{{option.origin}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="field">
+                <select name="destination" id="destination" ng-model="selectedDestination" requied>
+                  <option value="">Destination County</option>
+                  <option value="{{option}}"
+                    ng-repeat="option in valueDestination | unique:'destination'"
+                    ng-selelected="{{ selectedDestination == option }}"
+                    >{{option}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="field">
+                <select name="weight" id="weight" ng-model="selectedWeight" required>
+                  <option value="">Weight range</option>
+                  <option value="{{option}}"
+                    ng-repeat="option in valueWeight | unique:'weight'"
+                    ng-selelected="{{ selectedWeight == option }}"
+                    >{{option}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="field">
+                <button type="submit">Calculate</button>
+              </div>
+            </form>
+
+          </div><!-- /box-calculator -->
+
+          <section class="results-container">
+
+            <div class="card-result {{resultClass}}" id="cardResult">
+
+              <div class="block">
+                <h4 class="block-title">Origin County</h4>
+                <p ng-bind="resultOrigin"></p>
+              </div>
+
+              <div class="block">
+                <h4 class="block-title">Destination County</h4>
+                <p ng-bind="resultDestination"></p>
+              </div>
+
+              <div class="block">
+                <h4 class="block-title">Weight Range</h4>
+                <p ng-bind="resultWeight"></p>
+              </div>
+
+              <div class="block price">
+                <h4 class="block-title">Price</h4>
+                <p><strong>&euro; <span ng-bind="resultPrice"></span></strong></p>
+              </div>
+
+            </div>
+
+          </section><!-- /results-container -->
+
+      </div><!-- /container -->
+
+    </section>
+
+  </div><!-- /wrapper -->
+
+</body>
+</html>
